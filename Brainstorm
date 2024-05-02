@@ -1,17 +1,23 @@
 # Player vs AI to play a similated game of Astro Empires 
 # with multiple entities vying for control of the galatic clusters. 
 # AI should be able to interact with galaxy and other entities. 
-#  see surroundings(players, fleets, bases, wormholes)
-#  interact with surroundings
+# see surroundings(players, fleets, bases, wormholes)
+# Interact with surroundings
 #    communicate
 #    build and tear-down
+#    base building, planet shaping
 #    reposition
+#    research
 #    give and borrow
+#    change goals
 # For the player, include a Galactic map
-#  Displays stars, 
-#  hovering over stars produces star dropdown 
-#  star dropdown shows star type, planets, fleets above planets, other items of interest
-#  hoving over planet reveals planet drop down 
-#  planet drop down reveal base(bases?), fleets, and statistics of interest.
-#  
+#    Displays stars, 
+#    hovering over stars produces star dropdown 
+#    star dropdown shows star type, planets, fleets above planets, other items of interest
+#    hoving over planet reveals planet drop down 
+#    planet drop down reveal base(bases?), fleets, and statistics of interest.
+# Account ledger displays how money is being spent in the player's or AI's empire. 
+#    Expenses
+#    Income
+#    Other
 # Allow messages to be passed between entities
