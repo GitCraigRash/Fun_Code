@@ -2,7 +2,11 @@
 # with multiple entities vying for control of the galatic clusters. 
 # AI should be able to interact with galaxy and other entities. 
 #  see surroundings(players, fleets, bases, wormholes)
-#  
+#  interact with surroundings
+#    communicate
+#    build and tear-down
+#    reposition
+#    give and borrow
 # For the player, include a Galactic map
 #  Displays stars, 
 #  hovering over stars produces star dropdown 
