@@ -10,12 +10,14 @@
 #    research
 #    give and borrow
 #    change goals
+#    Set up contracts and agreements
 # For the player, include a Galactic map
 #    Displays stars, 
 #    hovering over stars produces star dropdown 
 #    star dropdown shows star type, planets, fleets above planets, other items of interest
 #    hoving over planet reveals planet drop down 
 #    planet drop down reveal base(bases?), fleets, and statistics of interest.
+#    
 # Account ledger displays how money is being spent in the player's or AI's empire. 
 #    Expenses
 #    Income
