@@ -1,5 +1,6 @@
 # Player vs AI to play a similated game of Astro Empires 
 # with multiple entities vying for control of the galatic clusters. 
+# * indicates extra features
 # AI should be able to interact with galaxy and other entities. 
 # see surroundings(players, fleets, bases, wormholes)
 # Interact with surroundings
@@ -10,26 +11,26 @@
 #    research
 #    give and borrow
 #    change goals
-#    Set up contracts and agreements
+#   * Set up contracts and agreements
 # For the player, include a Galactic map
 #    Displays stars, 
 #    hovering over stars produces star dropdown 
 #    star dropdown shows star type, planets, fleets above planets, other items of interest
 #    hoving over planet reveals planet drop down 
 #    planet drop down reveal base(bases?), fleets, and statistics of interest.
-# Find and hire different commanders for different jobs
-# Can collaborate to build megaprojects.
+# Hire commanders for different jobs
+# * Can collaborate to build megaprojects.
 # Account ledger displays how money is being spent in the player's or AI's empire. 
 #    Expenses
 #    Income
 #    Other
-#    Capital gains
-#      Stock
-#      Bonds
+#    * Capital gains
+#      * Stock
+#      * Bonds
 #      
 # Allow messages to be passed between entities
 # Actions can be understood as part of communication
-# Can spy on other player's and AI's expences, income, fleet, bases, plans, messages, and other.
-# Cost for goods and services scale to living expences(More expensive to build stuff in developed societies)
-# Space Piratites incease based on opprotunity(goods, location, security)
-# Corruption increses based on the difference of wealth from giver to reciever minus security measures.
+# * Can spy on other player's and AI's expences, income, fleet, bases, plans, messages, and other.
+# * Cost for goods and services scale to living expences(More expensive to build stuff in developed societies)
+# * Space Piratites incease based on opprotunity(goods, location, security)
+# * Corruption increses based on the difference of wealth from giver to reciever minus security measures.
