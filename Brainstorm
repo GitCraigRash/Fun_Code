@@ -17,9 +17,13 @@
 #    star dropdown shows star type, planets, fleets above planets, other items of interest
 #    hoving over planet reveals planet drop down 
 #    planet drop down reveal base(bases?), fleets, and statistics of interest.
-#    
+# Find and hire different commanders for different jobs
+# 
 # Account ledger displays how money is being spent in the player's or AI's empire. 
 #    Expenses
 #    Income
 #    Other
+#    
 # Allow messages to be passed between entities
+# Actions can be understood as part of communication
+# 
