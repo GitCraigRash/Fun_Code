@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Map</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(10, 50px);
+            gap: 2px;
+        }
+        .grid-item {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .grid-item:hover {
+            background-color: #333;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <!-- Generate grid items -->
+    <!-- You can customize the content of each grid item as needed -->
+    <!-- In this example, I'm using random values to represent empty space, yellow stars, or nebulae -->
+    <!-- You can replace this with your actual data -->
+    <!-- For simplicity, I'm using a 2D array, you may want to replace it with your own data structure -->
+    <!-- Additionally, you can replace the content with actual planet and ship data -->
+    <script>
+        // Example data generation
+        function generateGrid() {
+            const grid = [];
+            for (let i = 0; i < 10; i++) {
+                grid[i] = [];
+                for (let j = 0; j < 10; j++) {
+                    const randomNumber = Math.random();
+                    if (randomNumber < 0.3) {
+                        grid[i][j] = "Empty";
+                    } else if (randomNumber < 0.6) {
+                        grid[i][j] = "Yellow Star";
+                    } else {
+                        grid[i][j] = "Nebula";
+                    }
+                }
+            }
+            return grid;
+        }
+
+        const grid = generateGrid();
+
+        // Render grid items
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                const gridItem = document.createElement("div");
+                gridItem.className = "grid-item";
+                gridItem.textContent = grid[i][j];
+                gridItem.addEventListener("mouseover", function() {
+                    if (grid[i][j] === "Yellow Star") {
+                        const dropdown = document.createElement("div");
+                        dropdown.className = "dropdown";
+                        dropdown.innerHTML = `
+                            <button>Planet 1</button>
+                            <div class="dropdown-content">
+                                <button>Ship 1</button>
+                                <button>Ship 2</button>
+                            </div>
+                        `;
+                        gridItem.appendChild(dropdown);
+                    }
+                });
+                gridItem.addEventListener("mouseout", function() {
+                    const dropdown = gridItem.querySelector(".dropdown");
+                    if (dropdown) {
+                        dropdown.remove();
+                    }
+                });
+                document.querySelector(".grid-container").appendChild(gridItem);
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>
