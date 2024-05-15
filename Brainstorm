@@ -2,7 +2,7 @@
 # with multiple entities vying for control of the galatic clusters. 
 # * indicates extra features
 # AI should be able to interact with galaxy and other entities. 
-# see surroundings(players, fleets, bases, wormholes)
+# see surroundings(players, VIPs, fleets, bases, wormholes)
 # Interact with surroundings
 #    communicate
 #    build and tear-down
@@ -15,12 +15,12 @@
 #       Hack
 #       Bribe
 #       Steal
-#       Sow Distrust
-#       Obstruct/Block
-#    Celebrate
-#      create art
-#      dance
-#      creat music
+#       *Sow Distrust
+#       *Obstruct/Block
+#    *Celebrate
+#      *create art
+#      *dance
+#      *creat music
 #      
 #   * Set up contracts and agreements
 # For the player, include a Galactic map
