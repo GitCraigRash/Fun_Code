@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Start Menu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="background">
+  <div class="menu">
+    <h1>Asteroids Beyond</h1>
+    <ul>
+      <li><a href="#">Campaign</a></li>
+      <li><a href="#">Challenge</a></li>
+      <li><a href="#">Custom</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </div>
+</div>
+<audio autoplay loop>
+  <source src="background_chime.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<audio autoplay loop>
+  <source src="didgeridoo_music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</body>
+</html>
