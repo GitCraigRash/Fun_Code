@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Empire Planets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Space Empire Planets</h1>
+        <div class="planet-card">
+            <img src="planet1.jpg" alt="Planet Image" class="planet-image">
+            <div class="planet-info">
+                <h2>Planet Name</h2>
+                <ul>
+                    <li>Raw Materials: 100</li>
+                    <li>Refined Materials: 50</li>
+                    <li>Composite Materials: 30</li>
+                    <li>Consumer Goods: 20</li>
+                    <li>Luxury Goods: 10</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="planet-card">
+            <img src="planet2.jpg" alt="Planet Image" class="planet-image">
+            <div class="planet-info">
+                <h2>Planet Name</h2>
+                <ul>
+                    <li>Raw Materials: 200</li>
+                    <li>Refined Materials: 100</li>
+                    <li>Composite Materials: 60</li>
+                    <li>Consumer Goods: 40</li>
+                    <li>Luxury Goods: 20</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Add more planet cards as needed -->
+        
+    </div>
+</body>
+</html>
