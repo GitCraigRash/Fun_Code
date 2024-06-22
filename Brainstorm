@@ -37,7 +37,9 @@
 #    * Capital gains
 #      * Stock
 #      * Bonds
-#      
+#      * Real Estate
+#      * Environmental Damage
+#
 # Allow messages to be passed between entities
 # Actions can be understood as part of communication
 # * Can spy on other player's and AI's expences, income, fleet, bases, plans, messages, and other.
