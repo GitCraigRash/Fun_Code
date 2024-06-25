@@ -8,20 +8,42 @@
             font-family: Arial, sans-serif;
         }
         .container {
-            margin: 20px;
+            margin: 40px;
         }
         .output-list {
             margin-top: 20px;
         }
         .output-display {
             display: inline-block;
-            margin-left: 10px;
+            margin-left: 20px;
         }
     </style>
     <script>
-        function updateOutput() {
-            const inputField = document.getElementById('inputField');
-            const outputField = document.getElementById('outputField');
+        function updateOutput1(inputId, outputId) {
+            const inputField1 = document.getElementById(inputId);
+            const outputField1 = document.getElementById(outputId);
+            const inputValue1 = parseInt(inputField1.value);
+
+            if (!isNaN(inputValue) && inputValue >= 1 && inputValue1 <= 10) {
+                const result = inputValue * 1.4 - 10;
+                outputField.textContent = result.toFixed(2);
+            } else {
+                outputField.textContent = '';
+            }
+        }
+
+        function confirmInput1(inputId, outputId) {
+            const inputField1 = document.getElementById(inputId);
+            const outputField1 = document.getElementById(outputId);
+            const inputValue1 = parseInt(inputField1.value);
+
+            if (isNaN(inputValue) || inputValue < 1 || inputValue > 1000) {
+                alert('Please enter a number between 1 and 1000');
+                return;
+            }
+        function updateOutput2(inputId, outputId) {
+            const inputField = document.getElementById(inputId);
+            const outputField = document.getElementById(outputId);
             const inputValue = parseInt(inputField.value);
 
             if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 1000) {
@@ -32,16 +54,37 @@
             }
         }
 
-        function confirmInput() {
-            const inputField = document.getElementById('inputField');
-            const outputField = document.getElementById('outputField');
+        function confirmInput2(inputId, outputId) {
+            const inputField = document.getElementById(inputId);
+            const outputField = document.getElementById(outputId);
             const inputValue = parseInt(inputField.value);
 
             if (isNaN(inputValue) || inputValue < 1 || inputValue > 1000) {
                 alert('Please enter a number between 1 and 1000');
                 return;
             }
+        function updateOutput3(inputId, outputId) {
+            const inputField = document.getElementById(inputId);
+            const outputField = document.getElementById(outputId);
+            const inputValue = parseInt(inputField.value);
 
+            if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 1000) {
+                const result = inputValue * 1.4 - 10;
+                outputField.textContent = result.toFixed(2);
+            } else {
+                outputField.textContent = '';
+            }
+        }
+
+        function confirmInput3(inputId, outputId) {
+            const inputField = document.getElementById(inputId);
+            const outputField = document.getElementById(outputId);
+            const inputValue = parseInt(inputField.value);
+
+            if (isNaN(inputValue) || inputValue < 1 || inputValue > 1000) {
+                alert('Please enter a number between 1 and 1000');
+                return;
+            }
             const result = inputValue * 1.4 - 10;
 
             // Append the result to the output list
@@ -58,11 +101,26 @@
 </head>
 <body>
     <div class="container">
-        <label for="inputField">Input (1-1000): </label>
-        <input type="number" id="inputField" min="1" max="1000" oninput="updateOutput()">
-        <button onclick="confirmInput()">Confirm</button>
-        <span id="outputField" class="output-display"></span>
+        <label for="inputField1">Input 1 (1-10): </label>
+        <input type="number" id="inputField1" min="1" max="10" oninput="updateOutput1('inputField1', 'outputField1')">
+        <button onclick="confirmInput('inputField1', 'outputField1')">Confirm</button>
+        <span id="outputField1" class="output-display"></span>
     </div>
+
+    <div class="container">
+        <label for="inputField2">Input 2 (1-100): </label>
+        <input type="number" id="inputField2" min="1" max="100" oninput="updateOutput('inputField2', 'outputField2')">
+        <button onclick="confirmInput('inputField2', 'outputField2')">Confirm</button>
+        <span id="outputField2" class="output-display"></span>
+    </div>
+
+    <div class="container">
+        <label for="inputField3">Input 3 (1-1000): </label>
+        <input type="number" id="inputField3" min="1" max="1000" oninput="updateOutput('inputField3', 'outputField3')">
+        <button onclick="confirmInput('inputField3', 'outputField3')">Confirm</button>
+        <span id="outputField3" class="output-display"></span>
+    </div>
+
     <div class="container output-list">
         <h3>Output List</h3>
         <ul id="outputList"></ul>
