@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Multiplier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        .output-list {
+            margin-top: 20px;
+        }
+        .output-display {
+            display: inline-block;
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        function updateOutput() {
+            const inputField = document.getElementById('inputField');
+            const outputField = document.getElementById('outputField');
+            const inputValue = parseInt(inputField.value);
+
+            if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 1000) {
+                const result = inputValue * 1.4 - 10;
+                outputField.textContent = result.toFixed(2);
+            } else {
+                outputField.textContent = '';
+            }
+        }
+
+        function confirmInput() {
+            const inputField = document.getElementById('inputField');
+            const outputField = document.getElementById('outputField');
+            const inputValue = parseInt(inputField.value);
+
+            if (isNaN(inputValue) || inputValue < 1 || inputValue > 1000) {
+                alert('Please enter a number between 1 and 1000');
+                return;
+            }
+
+            const result = inputValue * 1.4 - 10;
+
+            // Append the result to the output list
+            const outputList = document.getElementById('outputList');
+            const listItem = document.createElement('li');
+            listItem.textContent = `Input: ${inputValue}, Output: ${result.toFixed(2)}`;
+            outputList.appendChild(listItem);
+
+            // Clear the input field and output display
+            inputField.value = '';
+            outputField.textContent = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <label for="inputField">Input (1-1000): </label>
+        <input type="number" id="inputField" min="1" max="1000" oninput="updateOutput()">
+        <button onclick="confirmInput()">Confirm</button>
+        <span id="outputField" class="output-display"></span>
+    </div>
+    <div class="container output-list">
+        <h3>Output List</h3>
+        <ul id="outputList"></ul>
+    </div>
+</body>
+</html>
