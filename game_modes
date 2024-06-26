@@ -1,0 +1,28 @@
+game_modes = [
+    {"name": "Empire Expansion", "description": "Focus on expanding your empire by colonizing new planets, establishing outposts, and securing resources."},
+    {"name": "Diplomatic Relations", "description": "Manage diplomatic relations with other alien civilizations, negotiate treaties, and resolve conflicts peacefully."},
+    {"name": "Research and Development", "description": "Invest in scientific research to unlock new technologies that enhance your empire's capabilities."},
+    {"name": "Economic Management", "description": "Oversee the economy of your empire, manage resources, trade routes, and taxation to ensure prosperity."},
+    {"name": "Military Command", "description": "Build and manage fleets, conduct military campaigns, and defend your empire from external threats."},
+    {"name": "Political Intrigue", "description": "Navigate internal politics, manage factions within your empire, and maintain stability through strategic decisions."},
+    {"name": "Espionage and Intelligence", "description": "Conduct espionage operations, gather intelligence on rivals, and sabotage enemy efforts."},
+    {"name": "Cultural Influence", "description": "Spread your empire's culture and ideology to other civilizations, influence galactic opinion, and gain soft power."},
+    {"name": "Exploration and Discovery", "description": "Send expeditions to uncharted regions of space, discover ancient artifacts, and encounter new species."},
+    {"name": "Trade Federation", "description": "Establish and manage a powerful trade federation, negotiate trade agreements, and dominate the galactic market."},
+    {"name": "Pirate Hunting", "description": "Combat space pirates, protect trade routes, and eliminate piracy threats to ensure safe interstellar commerce."},
+    {"name": "Galactic Senate", "description": "Participate in a galactic senate, influence policies, vote on galactic issues, and shape the laws that govern the galaxy."},
+    {"name": "Space Race", "description": "Compete with rival empires in a race to achieve specific milestones such as technological advancements or territorial expansion."},
+    {"name": "Galactic Crisis Management", "description": "Respond to galactic crises such as pandemics, natural disasters, or invasions, and coordinate relief efforts."},
+    {"name": "Planetary Governance", "description": "Manage individual planets within your empire, balance development with environmental concerns, and address local issues."},
+    {"name": "Virtual Reality Battles", "description": "Engage in simulated battles to test strategies, train personnel, and improve combat readiness."},
+    {"name": "Genetic Engineering", "description": "Experiment with genetic modifications on alien species or your own population to enhance abilities or adapt to new environments."},
+    {"name": "Ancient Relics", "description": "Search for and excavate ancient relics with mysterious powers, uncovering secrets and enhancing your empire's capabilities."},
+    {"name": "Holonet Media Empire", "description": "Control media outlets across the galaxy, influence public opinion, and shape the narrative of galactic events."},
+    {"name": "Galactic Olympics", "description": "Host or participate in a galactic sporting event, showcasing your empire's prowess and fostering cultural exchange among civilizations."}
+]
+
+# Example usage:
+for mode in game_modes:
+    print(f"Game Mode: {mode['name']}")
+    print(f"Description: {mode['description']}")
+    print("---")
