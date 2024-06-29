@@ -53,6 +53,8 @@
 #    star dropdown shows star type, planets, fleets above planets, other items of interest
 #    hoving over planet reveals planet drop down 
 #    planet drop down reveals bases, fleets, sites of interest and and key statistics .
+#  Show people of interest
+#    Show small world relationship chart
 # * Can collaborate to build megaprojects.
 # Account ledger displays how money is being spent in the player's or AI's empire. 
 #    Expenses
