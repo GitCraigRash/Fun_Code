@@ -1,3 +1,4 @@
+
 # Player vs AI to play a similated game of Steller Socialite
 # with multiple entities vying for control of the galatic clusters. 
 # * indicates extra features
@@ -12,6 +13,7 @@
 #      Plot with others
 #      Barter
 #      get leverage
+#      religious leverage
 #    build and tear-down
 #      base building, planet shaping
 #      reposition
