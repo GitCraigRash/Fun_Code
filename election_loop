@@ -1,50 +1,57 @@
-# Game Loop 1
-# Elections
-# Goal: Get elected
-# Ways: Direct Democracy
-#       Representative Democracy
-#       Parlamentary Democracy
-# Voting Systems:
-#        First Past the Post
-#        Proportional Representation
-#           - Single Transferable Vote
-#        Runoff Voting
-#        Instate-Runoff Voting/ Ranked Choice Voting 
-#        Borda Court
-#        Approval Voting
-#        Cumulative Voting
-#        Electoral College
-# Intellegence Gathering:
-#  Conduct Serveys to gather demographic information
-#    age
-#    gender
-#    income
-#    education
-#    ethnicity
-#    religion
-#    key issues
-#    local culture
-#      Norms
-#      traditions
-#      values
-# Skills
-#   Speeches
-#   Debating
-#   Networking
-#   Financing
-#   Crisis Management
-#   Volenteer Recruitment
-# Travel
-#   Itinerary mangagment
-#    Target swing states
-#    Target key officials
+# Game Loop 1: Elections
 
-# Loop 
-# The Player will decide where to run
-# The player will gather finanical support from either grass roots, corporate, or state backing.
-# The player will hire a team.
-# The player will announce his campain, vision, and mission statement
-# The player will travel and do speeches
-# Speeches will be minigames of memeory, timeing, and unexpected circumstances
-# Occassionally, random events will affect the campain.
-# At the designated time, the votes will be tallied and the player wins or loses. 
+# Goal:
+# - Get elected
+
+# Ways:
+# - Direct Democracy
+# - Representative Democracy
+# - Parliamentary Democracy
+
+# Voting Systems:
+# - First Past the Post
+# - Proportional Representation
+#     - Single Transferable Vote
+# - Runoff Voting
+# - Instant-Runoff Voting / Ranked Choice Voting
+# - Borda Count
+# - Approval Voting
+# - Cumulative Voting
+# - Electoral College
+
+# Intelligence Gathering:
+# - Conduct surveys to gather demographic information:
+#     - Age
+#     - Gender
+#     - Income
+#     - Education
+#     - Ethnicity
+#     - Religion
+#     - Key issues
+#     - Local culture
+#         - Norms
+#         - Traditions
+#         - Values
+
+# Skills:
+# - Speeches
+# - Debating
+# - Networking
+# - Financing
+# - Crisis Management
+# - Volunteer Recruitment
+
+# Travel:
+# - Itinerary management:
+#     - Target swing states
+#     - Target key officials
+
+# Loop:
+# - The player will decide where to run.
+# - The player will gather financial support from either grassroots, corporate, or state backing.
+# - The player will hire a team.
+# - The player will announce their campaign, vision, and mission statement.
+# - The player will travel and give speeches.
+# - Speeches will be mini-games involving memory, timing, and unexpected circumstances.
+# - Occasionally, random events will affect the campaign.
+# - At the designated time, the votes will be tallied and the player wins or loses.
