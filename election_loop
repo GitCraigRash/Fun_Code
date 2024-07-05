@@ -45,13 +45,42 @@
 # Itinerary management:
 # Target swing states
 # Target key officials
-
 # Loop:
 # The player will decide where to run.
+# - Analyze potential regions or districts to determine the best location for running.
+# - Consider factors such as voter demographics, current political climate, and historical voting patterns.
+
 # The player will gather financial support from either grassroots, corporate, or state backing.
+# - Launch fundraising campaigns to attract small donations from individual supporters (grassroots).
+# - Seek large donations and endorsements from businesses and influential individuals (corporate).
+# - Apply for and secure government funding or subsidies available for election campaigns (state backing).
+
 # The player will hire a team.
+# - Recruit campaign managers, strategists, and advisors to plan and execute the campaign.
+# - Hire volunteers and staff for canvassing, phone banking, and organizing events.
+# - Employ specialists in social media, public relations, and data analysis to optimize campaign efforts.
+
 # The player will announce their campaign, vision, and mission statement.
+# - Organize a major event or press conference to officially announce the candidacy.
+# - Clearly articulate the vision and mission statement to inspire and mobilize supporters.
+# - Develop and distribute campaign materials, such as flyers, posters, and online content.
+
 # The player will travel and give speeches.
+# - Plan and manage travel itineraries to visit key locations and engage with voters.
+# - Schedule and attend town halls, rallies, debates, and other public events.
+# - Adapt speeches to address the specific concerns and interests of different audiences.
+
 # Speeches will be mini-games involving memory, timing, and unexpected circumstances.
+# - Mini-games will test the player's ability to remember key points and deliver them effectively.
+# - Incorporate elements that require precise timing to maximize impact.
+# - Introduce unexpected circumstances, such as interruptions or technical issues, to challenge the player.
+
 # Occasionally, random events will affect the campaign.
+# - Positive events, such as endorsements from prominent figures or favorable media coverage, can boost the campaign.
+# - Negative events, such as scandals or opposition attacks, can harm the campaign and require crisis management.
+# - Unforeseen circumstances, like natural disasters or economic shifts, may influence voter priorities and campaign strategy.
+
 # At the designated time, the votes will be tallied and the player wins or loses.
+# - Monitor pre-election polls and voter sentiment to gauge the campaign's progress.
+# - Ensure all logistical aspects of election day are well-managed, including voter turnout efforts.
+# - Analyze the results and reflect on the campaign's strengths and weaknesses for future improvement.
