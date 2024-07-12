@@ -1,0 +1,37 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GameManager : MonoBehaviour
+{
+    public Text statusText;
+
+    private int currentStep = 0;
+    private string[] steps = {
+        "Analyze Regions",
+        "Gather Financial Support",
+        "Hire a Team",
+        "Announce Campaign",
+        "Travel and Give Speeches",
+        "Handle Random Events",
+        "Election Day"
+    };
+
+    void Start()
+    {
+        NextStep();
+    }
+
+    public void NextStep()
+    {
+        if (currentStep < steps.Length)
+        {
+            statusText.text = steps[currentStep];
+            currentStep++;
+        }
+        else
+        {
+            statusText.text = "Election Over";
+            // Handle election result here
+        }
+    }
+}
