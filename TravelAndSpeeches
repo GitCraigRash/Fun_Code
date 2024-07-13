@@ -1,0 +1,18 @@
+using UnityEngine;
+
+public class TravelAndSpeeches : MonoBehaviour
+{
+    public void PlanTravel()
+    {
+        // Add logic for travel planning here
+        Debug.Log("Planning travel...");
+        // Example: Schedule town halls, rallies, debates
+    }
+
+    public void GiveSpeech()
+    {
+        // Add logic for giving speeches here
+        Debug.Log("Giving speech...");
+        // Example: Mini-games for speeches
+    }
+}
