@@ -100,3 +100,75 @@ void ZoomCamera()
     float scroll = Input.GetAxis("Mouse ScrollWheel");
     mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize - scroll, 5, 20);
 }
+
+void ConnectStars()
+{
+    for (int i = 0; i < stars.Count - 1; i++)
+    {
+        for (int j = i + 1; j < stars.Count; j++)
+        {
+            if (ShouldConnectStars(stars[i], stars[j]))
+            {
+                DrawSpaceLane(stars[i], stars[j], Color.blue);
+            }
+        }
+    }
+
+    // Connect constellations with red lines
+    // This part can be more complex depending on how you define constellations
+}
+
+bool ShouldConnectStars(GameObject star1, GameObject star2)
+{
+    float distance = Vector3.Distance(star1.transform.position, star2.transform.position);
+    return distance < 5; // Example threshold for connecting stars
+}
+
+void DrawSpaceLane(GameObject start, GameObject end, Color color)
+{
+    GameObject line = new GameObject();
+    LineRenderer lr = line.AddComponent<LineRenderer>();
+    lr.positionCount = 2;
+    lr.SetPosition(0, start.transform.position);
+    lr.SetPosition(1, end.transform.position);
+    lr.startColor = color;
+    lr.endColor = color;
+    lr.startWidth = 0.1f;
+    lr.endWidth = 0.1f;
+}
+
+void ConnectStars()
+{
+    for (int i = 0; i < stars.Count - 1; i++)
+    {
+        for (int j = i + 1; j < stars.Count; j++)
+        {
+            if (ShouldConnectStars(stars[i], stars[j]))
+            {
+                DrawSpaceLane(stars[i], stars[j], Color.blue);
+            }
+        }
+    }
+
+    // Connect constellations with red lines
+    // This part can be more complex depending on how you define constellations
+}
+
+bool ShouldConnectStars(GameObject star1, GameObject star2)
+{
+    float distance = Vector3.Distance(star1.transform.position, star2.transform.position);
+    return distance < 5; // Example threshold for connecting stars
+}
+
+void DrawSpaceLane(GameObject start, GameObject end, Color color)
+{
+    GameObject line = new GameObject();
+    LineRenderer lr = line.AddComponent<LineRenderer>();
+    lr.positionCount = 2;
+    lr.SetPosition(0, start.transform.position);
+    lr.SetPosition(1, end.transform.position);
+    lr.startColor = color;
+    lr.endColor = color;
+    lr.startWidth = 0.1f;
+    lr.endWidth = 0.1f;
+}
