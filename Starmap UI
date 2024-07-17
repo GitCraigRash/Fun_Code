@@ -1,0 +1,79 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
+public class StarMap : MonoBehaviour
+{
+    public GameObject starPrefab;
+    public GameObject starMapBackground;
+    public GameObject galaxyBackground;
+    public GameObject planetMenu;
+    public Camera mainCamera;
+
+    private List<GameObject> stars = new List<GameObject>();
+    private Dictionary<GameObject, List<GameObject>> starPlanets = new Dictionary<GameObject, List<GameObject>>();
+
+    void Start()
+    {
+        GenerateBackground();
+        GenerateStars(30); // Generate between 12-50 stars
+        ConnectStars();
+    }
+
+    void GenerateBackground()
+    {
+        Instantiate(starMapBackground, Vector3.zero, Quaternion.identity);
+        Instantiate(galaxyBackground, Vector3.zero, Quaternion.identity);
+    }
+
+    void GenerateStars(int numberOfStars)
+    {
+        for (int i = 0; i < numberOfStars; i++)
+        {
+            Vector3 starPosition = GetSpiralPosition(i, numberOfStars);
+            GameObject star = Instantiate(starPrefab, starPosition, Quaternion.identity);
+            star.GetComponent<SpriteRenderer>().color = GetRandomStarColor();
+            star.name = GenerateStarName();
+            stars.Add(star);
+
+            List<GameObject> planets = GeneratePlanets(star);
+            starPlanets.Add(star, planets);
+        }
+    }
+
+    Vector3 GetSpiralPosition(int index, int totalStars)
+    {
+        float angle = 0.1f * index;
+        float radius = 1.5f * Mathf.Sqrt(index);
+        float x = radius * Mathf.Cos(angle);
+        float y = radius * Mathf.Sin(angle);
+        return new Vector3(x, y, 0);
+    }
+
+    Color GetRandomStarColor()
+    {
+        Color[] colors = { Color.red, Color.blue, Color.yellow, Color.white };
+        return colors[Random.Range(0, colors.Length)];
+    }
+
+    string GenerateStarName()
+    {
+        string[] prefixes = { "Al", "Be", "Ce", "De", "El" };
+        string[] suffixes = { "ron", "tar", "lia", "nus", "vex" };
+        return prefixes[Random.Range(0, prefixes.Length)] + suffixes[Random.Range(0, suffixes.Length)];
+    }
+
+    List<GameObject> GeneratePlanets(GameObject star)
+    {
+        List<GameObject> planets = new List<GameObject>();
+        int numberOfPlanets = Random.Range(1, 7);
+
+        for (int i = 0; i < numberOfPlanets; i++)
+        {
+            GameObject planet = new GameObject(star.name + " " + (i + 1));
+            planets.Add(planet);
+        }
+
+        return planets;
+    }
+}
