@@ -172,3 +172,23 @@ void DrawSpaceLane(GameObject start, GameObject end, Color color)
     lr.startWidth = 0.1f;
     lr.endWidth = 0.1f;
 }
+void OnStarClick(GameObject star)
+{
+    planetMenu.SetActive(true);
+    DisplayPlanets(star);
+}
+
+void DisplayPlanets(GameObject star)
+{
+    // Assuming you have UI elements set up in the planetMenu to display planets
+    // Clear previous entries and display new ones
+    foreach (GameObject planet in starPlanets[star])
+    {
+        // Add UI elements for each planet
+    }
+}
+
+void OnPlanetClick(GameObject planet)
+{
+    // Collapse planet menu and display regions with actions
+}
