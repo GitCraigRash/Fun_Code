@@ -77,3 +77,26 @@ public class StarMap : MonoBehaviour
         return planets;
     }
 }
+
+
+void Update()
+{
+    PanCamera();
+    ZoomCamera();
+}
+
+void PanCamera()
+{
+    if (Input.GetMouseButton(0))
+    {
+        float moveX = Input.GetAxis("Mouse X") * -0.1f;
+        float moveY = Input.GetAxis("Mouse Y") * -0.1f;
+        mainCamera.transform.Translate(new Vector3(moveX, moveY, 0));
+    }
+}
+
+void ZoomCamera()
+{
+    float scroll = Input.GetAxis("Mouse ScrollWheel");
+    mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize - scroll, 5, 20);
+}
