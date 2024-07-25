@@ -1,0 +1,76 @@
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    // Resource variables
+    public int gold;
+    public int food;
+    public int population;
+    public int taxRate;
+
+    // Trade route variables
+    public int tradeRoutes;
+    public int tradeIncome;
+
+    // Update interval (e.g., once per second)
+    public float updateInterval = 1.0f;
+    private float nextUpdateTime = 0f;
+
+    void Start()
+    {
+        // Initialize resources
+        gold = 1000;
+        food = 500;
+        population = 100;
+        taxRate = 10; // percentage
+        tradeRoutes = 2;
+        tradeIncome = 50;
+
+        // Set the next update time
+        nextUpdateTime = Time.time + updateInterval;
+    }
+
+    void Update()
+    {
+        // Check if it's time to update
+        if (Time.time >= nextUpdateTime)
+        {
+            // Call the economic update function
+            UpdateEconomy();
+
+            // Set the next update time
+            nextUpdateTime = Time.time + updateInterval;
+        }
+    }
+
+    void UpdateEconomy()
+    {
+        // Calculate tax income
+        int taxIncome = (population * taxRate) / 100;
+
+        // Update gold
+        gold += taxIncome + (tradeRoutes * tradeIncome);
+
+        // Simulate food consumption
+        food -= population;
+
+        // Log the current status (for debugging purposes)
+        Debug.Log("Gold: " + gold);
+        Debug.Log("Food: " + food);
+        Debug.Log("Population: " + population);
+
+        // Check for game over conditions
+        if (food <= 0)
+        {
+            Debug.Log("Game Over: Your population has starved.");
+            // Implement game over logic here
+        }
+    }
+
+    // Function to adjust tax rate (can be called from UI buttons)
+    public void AdjustTaxRate(int amount)
+    {
+        taxRate += amount;
+        if (taxRate < 0) taxRate = 0;
+    }
+
