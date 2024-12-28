@@ -1,97 +1,117 @@
-Core Game Mechanics
-perform_rest()
+class Game:
+    def __init__(self):
+        self.population = []  # List of individuals with their stats
+        self.resources = {"food": 100, "wood": 50, "paper": 20}
+        self.location = "home"
+        self.actions_remaining = 3
 
-Description: Allows the user and their group to rest, restoring health or stamina while consuming minimal resources.
-Inputs:
-population: List of individuals.
-Outputs:
-Health and stamina levels are updated.
-perform_travel(destination, transportation)
+    def perform_rest(self):
+        """Restores minor health or stamina to the population."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
 
-Description: Moves the user and their group to a new location.
-Inputs:
-destination: Target location coordinates or object.
-transportation: A multiplier that determines travel speed and cost.
-Outputs:
-New location.
-Consumes resources based on travel time and transportation type.
-perform_mission(mission_type, participants)
+        print("The population is resting...")
+        for person in self.population:
+            person["health"] += 5  # Example increment
+            person["energy"] += 10
+        
+        self.actions_remaining -= 1
 
-Description: Assigns a mission to specific individuals, producing or gathering resources.
-Inputs:
-mission_type: The type of mission (e.g., survey, intelligence, research, negotiate, work).
-participants: List of individuals assigned to the mission.
-Outputs:
-Resource production or intelligence gathered.
-Updates status of participants (energy, health, etc.).
-perform_talk(target_person, topic)
+    def perform_travel(self, destination, transportation_multiplier):
+        """Moves the group to a new location."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
 
-Description: Engages in a conversation with a specific person to negotiate, trade, or build relationships.
-Inputs:
-target_person: NPC or group.
-topic: The subject of discussion (e.g., trade deal, alliance, etc.).
-Outputs:
-Updated relationships or exchanged resources.
-perform_create(create_type, inputs)
+        print(f"Traveling from {self.location} to {destination}...")
+        travel_cost = 10 * transportation_multiplier
 
-Description: Allows the user to create something new, such as mental resources, stories, or task groups.
-Inputs:
-create_type: The type of creation (e.g., story, plan, task group).
-inputs: Required materials, individuals, or existing resources.
-Outputs:
-New resource or structure.
-Consumes inputs.
-perform_train(train_type, participants)
+        if self.resources["food"] < travel_cost:
+            print("Not enough food to travel!")
+            return
 
-Description: Increases the stats of individuals in a specific area (physical, mental, spiritual).
-Inputs:
-train_type: Stat to improve.
-participants: List of individuals being trained.
-Outputs:
-Improved stats for participants.
-Resource consumption for training.
-Supporting Functions
-combine_resources(resource_list)
+        self.resources["food"] -= travel_cost
+        self.location = destination
+        self.actions_remaining -= 1
 
-Description: Combines multiple resources and individuals to create advanced resources or structures.
-Inputs:
-resource_list: List of resources and individuals to combine.
-Outputs:
-New specialized resource or structure.
-Updates resource inventory.
-manage_supply_chain(supply_chain_map)
+    def perform_mission(self, mission_type, participants):
+        """Assigns a mission to specific individuals."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
 
-Description: Ensures all task groups and structures are maintained by managing resource allocation.
-Inputs:
-supply_chain_map: Map of tasks/groups and required resources.
-Outputs:
-Updated resource levels.
-Alerts if supply is insufficient.
-update_population_status(population)
+        print(f"Performing mission: {mission_type} with {len(participants)} participants...")
+        if mission_type == "survey":
+            new_resources = {"wood": 10, "food": 5}  # Example
+            for resource, amount in new_resources.items():
+                self.resources[resource] = self.resources.get(resource, 0) + amount
+            print(f"Survey mission successful! Found resources: {new_resources}")
+        elif mission_type == "gather intelligence":
+            print("Gathered intelligence on nearby areas.")
 
-Description: Updates the health, energy, and stats of all individuals based on tasks, rest, and resource availability.
-Inputs:
-population: List of individuals and their statuses.
-Outputs:
-Updated population status.
-allocate_actions(actions_remaining)
+        self.actions_remaining -= 1
 
-Description: Tracks the user’s actions during a turn and ensures the three-action limit.
-Inputs:
-actions_remaining: Counter of actions available this turn.
-Outputs:
-Updated action counter.
-resolve_turn_events()
+    def perform_talk(self, target_person, topic):
+        """Engages in conversation with an NPC."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
 
-Description: Handles all end-of-turn updates, such as resource depletion, structure upkeep, and mission results.
-Outputs:
-Updated game state.
-Example Workflow
-Start turn:
-Allocate three actions using allocate_actions.
-Player performs actions:
-Choose Rest, Travel, Mission, Talk, Create, or Train.
-Each action updates game state.
-End turn:
-Call resolve_turn_events to process upkeep and mission results.
-Update game state for the next turn.
+        print(f"Talking to {target_person} about {topic}...")
+        # Example implementation of conversation logic
+        if topic == "trade":
+            print(f"Negotiated a trade with {target_person}.")
+        elif topic == "alliance":
+            print(f"Formed an alliance with {target_person}.")
+
+        self.actions_remaining -= 1
+
+    def perform_create(self, create_type, inputs):
+        """Allows the user to create new resources or task groups."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
+
+        print(f"Creating {create_type} with inputs: {inputs}...")
+        if create_type == "task group":
+            print("Formed a new task group.")
+        elif create_type == "story":
+            print("Wrote a new story for the population.")
+
+        self.actions_remaining -= 1
+
+    def perform_train(self, train_type, participants):
+        """Improves stats of participants in a specific area."""
+        if self.actions_remaining <= 0:
+            print("No actions remaining this turn.")
+            return
+
+        print(f"Training {len(participants)} participants in {train_type}...")
+        for person in participants:
+            if train_type == "physical":
+                person["strength"] += 1  # Example stat increment
+            elif train_type == "mental":
+                person["intelligence"] += 1
+            elif train_type == "spiritual":
+                person["spirituality"] += 1
+
+        self.actions_remaining -= 1
+
+    def reset_actions(self):
+        """Resets the action counter for a new turn."""
+        self.actions_remaining = 3
+        print("Actions have been reset for the new turn.")
+
+# Example usage
+game = Game()
+game.population = [
+    {"name": "Alice", "health": 50, "energy": 30, "strength": 5, "intelligence": 7, "spirituality": 3},
+    {"name": "Bob", "health": 60, "energy": 40, "strength": 6, "intelligence": 6, "spirituality": 4}
+]
+
+# Simulate a turn
+game.perform_rest()
+game.perform_travel("forest", 1.2)
+game.perform_mission("survey", game.population)
+game.reset_actions()
