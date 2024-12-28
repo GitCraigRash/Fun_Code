@@ -103,15 +103,51 @@ class Game:
         self.actions_remaining = 3
         print("Actions have been reset for the new turn.")
 
-# Example usage
-game = Game()
-game.population = [
-    {"name": "Alice", "health": 50, "energy": 30, "strength": 5, "intelligence": 7, "spirituality": 3},
-    {"name": "Bob", "health": 60, "energy": 40, "strength": 6, "intelligence": 6, "spirituality": 4}
-]
+if __name__ == "__main__":
+    game = Game()
+    game.population = [
+        {"name": "Alice", "health": 50, "energy": 30, "strength": 5, "intelligence": 7, "spirituality": 3},
+        {"name": "Bob", "health": 60, "energy": 40, "strength": 6, "intelligence": 6, "spirituality": 4}
+    ]
 
-# Simulate a turn
-game.perform_rest()
-game.perform_travel("forest", 1.2)
-game.perform_mission("survey", game.population)
-game.reset_actions()
+    while True:
+        print("\nCurrent State:")
+        print(f"Resources: {game.resources}")
+        print(f"Location: {game.location}")
+        print(f"Actions Remaining: {game.actions_remaining}")
+
+        print("\nAvailable Actions:")
+        print("1. Rest")
+        print("2. Travel")
+        print("3. Perform Mission")
+        print("4. Talk")
+        print("5. Create")
+        print("6. Train")
+        print("7. End Turn")
+
+        choice = input("Choose an action (1-7): ")
+
+        if choice == "1":
+            game.perform_rest()
+        elif choice == "2":
+            destination = input("Enter destination: ")
+            multiplier = float(input("Enter transportation multiplier: "))
+            game.perform_travel(destination, multiplier)
+        elif choice == "3":
+            mission_type = input("Enter mission type (survey/gather intelligence): ")
+            game.perform_mission(mission_type, game.population)
+        elif choice == "4":
+            target = input("Enter target person: ")
+            topic = input("Enter topic (trade/alliance): ")
+            game.perform_talk(target, topic)
+        elif choice == "5":
+            create_type = input("Enter create type (task group/story): ")
+            inputs = input("Enter inputs: ")
+            game.perform_create(create_type, inputs)
+        elif choice == "6":
+            train_type = input("Enter training type (physical/mental/spiritual): ")
+            game.perform_train(train_type, game.population)
+        elif choice == "7":
+            game.reset_actions()
+        else:
+            print("Invalid choice. Try again.")
