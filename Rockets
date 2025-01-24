@@ -1,5 +1,3 @@
-#Lets add rockets!
-
 import pygame
 import random
 import sys
@@ -40,16 +38,30 @@ class Rocket(pygame.sprite.Sprite):
         self.fuel_consumption_rate = 1  # fuel consumed per second of full throttle
         self.fuel_time_limit = 90  # seconds of full throttle time
         self.is_throttling = False
+        self.speed_x = 0  # Horizontal speed
 
     def update(self):
+        # Apply horizontal movement
+        self.rect.x += self.speed_x
+
+        # Ensure rocket stays within the screen bounds horizontally
+        if self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+
+        # Handle vertical movement (throttle)
         if self.is_throttling and self.fuel > 0:
             self.velocity = -5  # Upward velocity when throttling
             self.fuel -= self.fuel_consumption_rate / 60  # Consuming fuel over time
         else:
             self.velocity = 0  # Gravity or no throttle means no upward force
 
-        self.rect.y += self.velocity  # Move the rocket up
-        if self.rect.top < 0:  # Reset to the bottom if it goes off the screen
+        # Move rocket upward
+        self.rect.y += self.velocity
+
+        # Prevent rocket from going off-screen (wrap it around vertically)
+        if self.rect.top < 0:
             self.rect.bottom = SCREEN_HEIGHT
 
         # Prevent fuel from going below 0
@@ -84,11 +96,13 @@ for _ in range(5):
     obstacle = Obstacle()
     obstacle_group.add(obstacle)
 
-# Fuel bar setup
+# Fuel bar and score setup
 font = pygame.font.SysFont("Arial", 30)
+score = 0
 
 # Game loop
 running = True
+paused = False
 while running:
     screen.fill(BACKGROUND_COLOR)
 
@@ -99,26 +113,47 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 rocket.is_throttling = True  # Throttle when space is pressed
+            if event.key == pygame.K_LEFT:
+                rocket.speed_x = -3  # Move left when the left arrow is pressed
+            if event.key == pygame.K_RIGHT:
+                rocket.speed_x = 3  # Move right when the right arrow is pressed
+            if event.key == pygame.K_p:
+                paused = not paused  # Toggle pause/resume when 'P' is pressed
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
                 rocket.is_throttling = False  # Stop throttling when space is released
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                rocket.speed_x = 0  # Stop horizontal movement when keys are released
 
-    # Update rocket and obstacles
-    rocket_group.update()
-    obstacle_group.update()
+    if not paused:
+        # Update rocket and obstacles
+        rocket_group.update()
+        obstacle_group.update()
 
-    # Check for collisions between rocket and obstacles
-    if pygame.sprite.spritecollideany(rocket, obstacle_group):
-        print("Game Over! You collided with an obstacle.")
-        running = False  # End the game on collision
+        # Check for collisions between rocket and obstacles
+        if pygame.sprite.spritecollideany(rocket, obstacle_group):
+            print(f"Game Over! Final Score: {score}")
+            running = False  # End the game on collision
 
-    # Draw the rocket, obstacles, and fuel bar
-    rocket_group.draw(screen)
-    obstacle_group.draw(screen)
+        # Update score based on rocket's vertical position
+        score = int((SCREEN_HEIGHT - rocket.rect.y) / 10)
 
-    # Draw the fuel bar
+        # Draw the rocket, obstacles, and fuel bar
+        rocket_group.draw(screen)
+        obstacle_group.draw(screen)
+
+    # Display the fuel bar
     fuel_text = font.render(f"Fuel: {int(rocket.fuel)}s", True, FONT_COLOR)
     screen.blit(fuel_text, (10, 10))
+
+    # Display the score
+    score_text = font.render(f"Score: {score}", True, FONT_COLOR)
+    screen.blit(score_text, (SCREEN_WIDTH - 150, 10))
+
+    # Display the pause message
+    if paused:
+        pause_text = font.render("PAUSED", True, FONT_COLOR)
+        screen.blit(pause_text, (SCREEN_WIDTH // 2 - 75, SCREEN_HEIGHT // 2 - 30))
 
     # Update the display
     pygame.display.flip()
