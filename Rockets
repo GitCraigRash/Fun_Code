@@ -1,8 +1,131 @@
 Lets add rockets!
 
-#Definign space for rocket:
+import pygame
+import random
+import sys
 
-#Rocket properties:
+# Pygame setup
+pygame.init()
 
-#Rocket controls:
+# Constants
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+ROCKET_WIDTH = 50
+ROCKET_HEIGHT = 100
+OBSTACLE_WIDTH = 50
+OBSTACLE_HEIGHT = 30
+BACKGROUND_COLOR = (0, 0, 0)
+ROCKET_COLOR = (255, 0, 0)
+OBSTACLE_COLOR = (0, 255, 0)
+FUEL_COLOR = (0, 0, 255)
+FONT_COLOR = (255, 255, 255)
 
+# Initialize the screen
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Rocket Flight Game")
+
+# Clock for controlling the frame rate
+clock = pygame.time.Clock()
+
+# Rocket class
+class Rocket(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((ROCKET_WIDTH, ROCKET_HEIGHT))
+        self.image.fill(ROCKET_COLOR)
+        self.rect = self.image.get_rect()
+        self.rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 50)
+        self.velocity = 0
+        self.fuel = 90  # 90 seconds of fuel
+        self.fuel_consumption_rate = 1  # fuel consumed per second of full throttle
+        self.fuel_time_limit = 90  # seconds of full throttle time
+        self.is_throttling = False
+
+    def update(self):
+        if self.is_throttling and self.fuel > 0:
+            self.velocity = -5  # Upward velocity when throttling
+            self.fuel -= self.fuel_consumption_rate / 60  # Consuming fuel over time
+        else:
+            self.velocity = 0  # Gravity or no throttle means no upward force
+
+        self.rect.y += self.velocity  # Move the rocket up
+        if self.rect.top < 0:  # Reset to the bottom if it goes off the screen
+            self.rect.bottom = SCREEN_HEIGHT
+
+        # Prevent fuel from going below 0
+        if self.fuel < 0:
+            self.fuel = 0
+
+# Obstacle class
+class Obstacle(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((OBSTACLE_WIDTH, OBSTACLE_HEIGHT))
+        self.image.fill(OBSTACLE_COLOR)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(50, SCREEN_WIDTH - 50)
+        self.rect.y = -OBSTACLE_HEIGHT  # Start off-screen
+        self.speed = random.randint(2, 5)
+
+    def update(self):
+        self.rect.y += self.speed
+        if self.rect.top > SCREEN_HEIGHT:  # If off the screen, reset it
+            self.rect.y = -OBSTACLE_HEIGHT
+            self.rect.x = random.randint(50, SCREEN_WIDTH - 50)
+
+# Initialize the rocket
+rocket = Rocket()
+rocket_group = pygame.sprite.Group()
+rocket_group.add(rocket)
+
+# Initialize the obstacles
+obstacle_group = pygame.sprite.Group()
+for _ in range(5):
+    obstacle = Obstacle()
+    obstacle_group.add(obstacle)
+
+# Fuel bar setup
+font = pygame.font.SysFont("Arial", 30)
+
+# Game loop
+running = True
+while running:
+    screen.fill(BACKGROUND_COLOR)
+
+    # Event handling
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                rocket.is_throttling = True  # Throttle when space is pressed
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_SPACE:
+                rocket.is_throttling = False  # Stop throttling when space is released
+
+    # Update rocket and obstacles
+    rocket_group.update()
+    obstacle_group.update()
+
+    # Check for collisions between rocket and obstacles
+    if pygame.sprite.spritecollideany(rocket, obstacle_group):
+        print("Game Over! You collided with an obstacle.")
+        running = False  # End the game on collision
+
+    # Draw the rocket, obstacles, and fuel bar
+    rocket_group.draw(screen)
+    obstacle_group.draw(screen)
+
+    # Draw the fuel bar
+    fuel_text = font.render(f"Fuel: {int(rocket.fuel)}s", True, FONT_COLOR)
+    screen.blit(fuel_text, (10, 10))
+
+    # Update the display
+    pygame.display.flip()
+
+    # Control the frame rate
+    clock.tick(60)
+
+# Quit pygame
+pygame.quit()
+sys.exit()
